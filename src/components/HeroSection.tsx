@@ -235,70 +235,70 @@ export const HeroSection: React.FC = () => {
               onClick={handleOpen}
               className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center px-4 transition-opacity duration-500 ease-out cursor-pointer"
             >
-              <div className="relative flex flex-col items-center px-5 py-7 text-center sm:px-8 sm:py-9 w-[90%] max-w-[325px] sm:max-w-[370px] rounded-t-[130px] sm:rounded-t-[160px] rounded-b-2xl border-2 border-[#C5A059] bg-gradient-to-b from-[#FFFDF8] via-[#FAF5EC] to-[#F5ECE0] shadow-[0_25px_60px_-12px_rgba(80,25,10,0.45)]">
+              <div className="relative flex flex-col items-center px-6 py-9 text-center sm:px-10 sm:py-12 w-[94%] max-w-[360px] sm:max-w-[430px] rounded-t-[150px] sm:rounded-t-[185px] rounded-b-2xl border-2 border-[#C5A059] bg-gradient-to-b from-[#FFFDF8] via-[#FAF5EC] to-[#F5ECE0] shadow-[0_25px_60px_-12px_rgba(80,25,10,0.45)]">
                 {/* Delicate inner gold border */}
-                <div className="pointer-events-none absolute inset-1.5 sm:inset-2 rounded-t-[122px] sm:rounded-t-[152px] rounded-b-xl border border-[#C5A059]/40" />
+                <div className="pointer-events-none absolute inset-1.5 sm:inset-2.5 rounded-t-[142px] sm:rounded-t-[175px] rounded-b-xl border border-[#C5A059]/40" />
                 
                 {/* Traditional Corner Decor on bottom corners */}
-                <div className="pointer-events-none absolute bottom-2 left-2 w-4 sm:w-5 opacity-60">
+                <div className="pointer-events-none absolute bottom-2.5 left-2.5 w-5 sm:w-6 opacity-60">
                   <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
-                <div className="pointer-events-none absolute bottom-2 right-2 w-4 sm:w-5 opacity-60 -scale-x-100">
+                <div className="pointer-events-none absolute bottom-2.5 right-2.5 w-5 sm:w-6 opacity-60 -scale-x-100">
                   <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
 
                 {/* Darker Gold Mandala centered above arch */}
-                <div className="pointer-events-none absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                <div className="pointer-events-none absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 flex items-center justify-center">
                   <img
                     src={assets.mandalaGold}
                     alt=""
                     aria-hidden="true"
-                    className="w-18 sm:w-22 origin-center animate-[spin_24s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
+                    className="w-22 sm:w-26 origin-center animate-[spin_24s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
                   />
                 </div>
 
                 {/* Auspicious Invocation */}
-                <p className="mt-6 sm:mt-7 font-title text-[8.5px] sm:text-[9.5px] tracking-[0.26em] uppercase text-[#8B2500] font-semibold">
+                <p className="mt-8 sm:mt-9 font-title text-[9.5px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8B2500] font-bold">
                   || OM SRI GANESHAYA NAMAHA ||
                 </p>
 
                 {/* Date */}
-                <p className="eyebrow mt-1 text-[0.62rem] sm:text-[0.68rem] tracking-[0.25em] text-gold-deep font-semibold">
+                <p className="eyebrow mt-1 text-[0.68rem] sm:text-xs text-gold-deep font-semibold">
                   {weddingData.dateShort}
                 </p>
 
                 {/* Symmetrically Aligned Couple Names with Great Vibes Font */}
-                <div className="w-full text-center my-1.5 sm:my-2 px-3">
-                  <h2 className="font-script text-2xl min-[360px]:text-[1.85rem] sm:text-[2.35rem] font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-snug">
+                <div className="w-full text-center my-2.5 sm:my-3.5 px-3">
+                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
                     {weddingData.bride}
                   </h2>
-                  <div className="my-0.5 flex items-center justify-center gap-2 sm:gap-2.5">
-                    <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                    <span className="font-script text-lg sm:text-2xl font-bold text-[#8B2500] leading-none">&amp;</span>
-                    <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+                  <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
+                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
+                    <span className="font-script text-2xl sm:text-3xl font-bold text-[#8B2500]">&amp;</span>
+                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
                   </div>
-                  <h2 className="font-script text-2xl min-[360px]:text-[1.85rem] sm:text-[2.35rem] font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-snug">
+                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
                     {weddingData.groom}
                   </h2>
                 </div>
 
                 {/* Auspicious Divider */}
-                <div className="rule-gold mx-auto my-1.5 w-20 sm:w-28 opacity-70" />
+                <div className="rule-gold mx-auto my-2 w-28 sm:w-36 opacity-75" />
 
                 {/* Tap to open button */}
                 <button
                   type="button"
                   onClick={handleOpen}
                   aria-label="Open the wedding invitation"
-                  className="group relative mt-2 sm:mt-2.5 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-6 sm:px-7 py-2.5 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_14px_rgba(184,134,11,0.3)]"
+                  className="group relative mt-2.5 sm:mt-3.5 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-8 py-3 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(184,134,11,0.35)]"
                 >
-                  <span className="relative font-title text-[11px] sm:text-xs uppercase tracking-[0.24em] text-[#2C1802] font-bold">
+                  <span className="relative font-title text-xs sm:text-sm uppercase tracking-[0.28em] text-[#2C1802] font-bold">
                     {weddingConfig.invitation.doorsButtonText || 'Open Invitation'}
                   </span>
                 </button>
 
                 {/* Subtitle */}
-                <p className="mt-2 text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground text-center">
+                <p className="mt-2.5 text-[0.62rem] sm:text-xs uppercase tracking-[0.24em] text-muted-foreground text-center">
                   {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
                 </p>
               </div>
