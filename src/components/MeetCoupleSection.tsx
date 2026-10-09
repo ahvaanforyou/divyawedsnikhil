@@ -11,14 +11,23 @@ interface PersonCardProps {
   src: string;
   alt: string;
   delay?: number;
+  objectPosition?: string;
 }
 
-const PersonCard: React.FC<PersonCardProps> = ({ name, role, note, src, alt, delay = 0 }) => {
+const PersonCard: React.FC<PersonCardProps> = ({ name, role, note, src, alt, delay = 0, objectPosition = 'center 15%' }) => {
   return (
     <RevealOnScroll delay={delay}>
       <figure className="mx-auto max-w-sm text-center">
         <div className="relative mx-auto aspect-[4/5] overflow-hidden border border-gold/40 bg-muted shadow-[var(--shadow-card)]">
-          <img src={src} alt={alt} loading="lazy" width={1024} height={1280} className="h-full w-full object-cover" />
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            width={1024}
+            height={1280}
+            className="h-full w-full object-cover"
+            style={{ objectPosition }}
+          />
           <span className="pointer-events-none absolute inset-3 border border-paper/30" />
         </div>
         <figcaption>
@@ -54,6 +63,7 @@ export const MeetCoupleSection: React.FC = () => {
             src={weddingConfig.couple.bridePhoto || assets.bride}
             alt={weddingConfig.couple.bridePhotoAlt || `${weddingConfig.couple.bride}, the bride`}
             delay={0.1}
+            objectPosition="center 12%"
           />
           <PersonCard
             name={weddingConfig.couple.groom}
@@ -62,6 +72,7 @@ export const MeetCoupleSection: React.FC = () => {
             src={weddingConfig.couple.groomPhoto || assets.groom}
             alt={weddingConfig.couple.groomPhotoAlt || `${weddingConfig.couple.groom}, the groom`}
             delay={0.2}
+            objectPosition="54% 8%"
           />
         </div>
       </div>
