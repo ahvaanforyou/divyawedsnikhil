@@ -96,24 +96,6 @@ export const HeroSection: React.FC = () => {
         paused: true,
         onComplete: () => {
           setDoorsOpen(true);
-
-          // Video starts ONLY after doors completely finish opening
-          const vid = videoRef.current;
-          if (vid) {
-            vid.muted = true;
-            vid.defaultMuted = true;
-            const playPromise = vid.play();
-            if (playPromise !== undefined) {
-              playPromise
-                .then(() => {
-                  setVideoStarted(true);
-                })
-                .catch((err) => {
-                  console.warn('Video playback error:', err);
-                  handleVideoEnd();
-                });
-            }
-          }
         },
       });
 
@@ -176,12 +158,23 @@ export const HeroSection: React.FC = () => {
     // 1. Start audio immediately on direct user gesture
     playAudio();
 
-    // 2. Prime video on user gesture so browser grants autoplay permission when doors finish
+    // 2. Start video playing immediately behind the closed doors
+    // This allows the browser to buffer, decode, and render the stream in memory
+    // so when the doors swing open, playback is already butter-smooth with ZERO lag or white gap!
     const vid = videoRef.current;
     if (vid) {
       vid.muted = true;
       vid.defaultMuted = true;
-      vid.load();
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setVideoStarted(true);
+          })
+          .catch((err) => {
+            console.warn('Video playback warning:', err);
+          });
+      }
     }
 
     // 3. Play door opening animation
@@ -385,41 +378,16 @@ export const HeroSection: React.FC = () => {
       {/* Door Shadow Overlay (Clean, no darkness) */}
       <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/5" />
 
-      {/* ── First-Frame Backdrop directly behind the wooden doors ── */}
-      {/* Eliminates any white screen gap when doors part before video starts */}
-      {!videoFinished && (
-        <div className="absolute inset-0 z-20 overflow-hidden">
-          <img
-            src="/client-images/intro-poster.jpg"
-            alt=""
-            fetchPriority="high"
-            className="h-full w-full object-cover object-center"
-            style={{ width: '100vw', height: '100svh' }}
-          />
-        </div>
-      )}
-
-      {/* ── Video Overlay (Plays smoothly and fades out seamlessly into invitation card) ── */}
+      {/* ── Video Overlay (Decodes and plays behind doors, revealed smoothly without lag or glitch) ── */}
       {!videoFinished && (
         <div
-          className="fixed inset-0 z-[250] w-screen h-[100svh] overflow-hidden bg-black transition-opacity duration-1000 ease-out"
+          className="fixed inset-0 z-[25] w-screen h-[100svh] overflow-hidden bg-black transition-opacity duration-1000 ease-out"
           style={{
-            opacity: fadingVideo ? 0 : doorsOpen ? 1 : 0,
+            opacity: fadingVideo ? 0 : 1,
             pointerEvents: fadingVideo || !doorsOpen ? 'none' : 'auto',
           }}
         >
-          {/* Instant First-Frame Poster (Zero blank screen delay) */}
-          <img
-            src="/client-images/intro-poster.jpg"
-            alt=""
-            fetchPriority="high"
-            className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none transition-opacity duration-300 ${
-              videoStarted ? 'opacity-0' : 'opacity-100'
-            }`}
-            style={{ width: '100vw', height: '100svh' }}
-          />
-
-          {/* HTML5 Video element configured for iOS Safari & Android mobile autoplay compatibility */}
+          {/* HTML5 Video element configured for zero-latency autoplay and hardware acceleration */}
           <video
             ref={videoRef}
             src="/client-images/intro.mp4"
@@ -444,7 +412,7 @@ export const HeroSection: React.FC = () => {
             }}
           />
 
-          {/* Skip Intro button — appears gently once video is playing */}
+          {/* Skip Intro button — appears gently once doors are open and video is playing */}
           {doorsOpen && !fadingVideo && (
             <button
               type="button"
