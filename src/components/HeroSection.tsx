@@ -247,8 +247,8 @@ export const HeroSection: React.FC = () => {
                   <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
 
-                {/* Darker Gold Mandala centered proudly above the arch tip */}
-                <div className="pointer-events-none absolute -top-16 sm:-top-20 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                {/* Darker Gold Mandala: half above arch, half visible on the ivory card */}
+                <div className="pointer-events-none absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 flex items-center justify-center">
                   <img
                     src={assets.mandalaGold}
                     alt=""
@@ -257,8 +257,8 @@ export const HeroSection: React.FC = () => {
                   />
                 </div>
 
-                {/* Auspicious Invocation */}
-                <p className="mt-5 sm:mt-6 font-title text-[9.5px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8B2500] font-bold">
+                {/* Auspicious Invocation (clears the lower half of the mandala gracefully) */}
+                <p className="mt-8 sm:mt-10 font-title text-[9.5px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8B2500] font-bold">
                   || OM SRI GANESHAYA NAMAHA ||
                 </p>
 
