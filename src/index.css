@@ -141,3 +141,33 @@ html.doors-locked {
   display: block;
 }
 
+@keyframes scroll-blink {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 10px rgba(218, 165, 32, 0.65));
+  }
+  50% {
+    opacity: 0.35;
+    filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 2px rgba(218, 165, 32, 0.2));
+  }
+}
+
+.animate-scroll-blink {
+  animation: scroll-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes arrow-nudge-down {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  50% {
+    transform: translateY(6px);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.animate-arrow-down {
+  animation: arrow-nudge-down 1.5s infinite;
+}
+

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
+import { ChevronDown } from 'lucide-react';
 import { assets } from '../data/assets';
 import { weddingConfig, weddingData } from '../wedding.config';
 import { playAudio } from '../lib/audio';
@@ -168,11 +169,33 @@ export const HeroSection: React.FC = () => {
             <p className="invite-line mt-1 text-sm text-muted-foreground">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
+            {weddingData.feast && (
+              <p className="invite-line mt-1.5 text-xs uppercase tracking-wider text-gold-deep font-semibold">
+                {weddingData.feast}
+              </p>
+            )}
+
+            {/* Scroll Down Indicator (matching Hanisha style, inside card) */}
             <a
-              href="#blessings"
-              className="invite-line mt-9 inline-flex items-center gap-2 border border-gold/60 bg-transparent px-6 py-3 text-[0.7rem] uppercase tracking-[0.3em] text-gold-deep transition-colors hover:bg-gold/10"
+              href="#intro"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.getElementById('intro');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                }
+              }}
+              aria-label="Scroll down to invitation details"
+              className="invite-line group mt-7 sm:mt-8 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
             >
-              Send your blessing
+              <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-maroon font-bold select-none text-center animate-scroll-blink">
+                Scroll Down
+              </span>
+              <div className="animate-arrow-down flex items-center justify-center">
+                <ChevronDown className="size-4 sm:size-5 text-gold-deep stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] group-hover:text-maroon transition-colors" />
+              </div>
             </a>
           </div>
         </div>
@@ -194,20 +217,53 @@ export const HeroSection: React.FC = () => {
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/50 to-transparent" />
           </div>
 
+          {/* Centered Arch-Top Tiny Card Overlay on top of closed doors (similar to Hitesh's wedding) */}
           {!clicked && (
-            <button
-              type="button"
+            <div
               onClick={handleOpen}
-              aria-label="Open the temple doors and enter the invitation"
-              className="doors-button absolute inset-0 flex flex-col items-center justify-end gap-3 pb-24 focus:outline-none cursor-pointer"
+              className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] px-4 transition-opacity duration-500 ease-out cursor-pointer"
             >
-              <span className="rounded-full border border-gold/70 bg-black/35 px-8 py-4 font-title text-[0.7rem] uppercase tracking-[0.32em] text-paper backdrop-blur-sm transition-colors hover:bg-black/55">
-                {weddingConfig.invitation.doorsButtonText || 'Tap to open the doors'}
-              </span>
-              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-paper/70">
-                {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
-              </span>
-            </button>
+              <div className="paper-card arch-top relative flex flex-col items-center px-7 py-9 text-center sm:px-12 sm:py-12 w-[90%] max-w-[340px] sm:max-w-md border border-gold/50 shadow-2xl">
+                {/* Spinning gold mandala centered above card */}
+                <div className="pointer-events-none absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2">
+                  <img
+                    src={assets.mandalaGold}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-20 sm:w-24 animate-[spin_16s_linear_infinite] opacity-80"
+                  />
+                </div>
+
+                {/* Date */}
+                <p className="eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs text-gold-deep">{weddingData.dateShort}</p>
+
+                {/* Names */}
+                <h2 className="mt-3 sm:mt-4 mb-2 flex flex-wrap items-center justify-center gap-x-2 font-display text-2xl sm:text-3xl md:text-4xl leading-tight text-foreground font-semibold">
+                  <span>{weddingData.groom}</span>
+                  <span className="font-title text-base sm:text-lg text-maroon">&amp;</span>
+                  <span>{weddingData.bride}</span>
+                </h2>
+
+                {/* Auspicious Divider */}
+                <div className="rule-gold mx-auto my-3 w-24 sm:w-28 opacity-70" />
+
+                {/* Tap to open button */}
+                <button
+                  type="button"
+                  onClick={handleOpen}
+                  aria-label="Open the wedding invitation"
+                  className="group relative mt-2 overflow-hidden rounded-full border border-gold/70 bg-gold-deep px-7 py-3 transition-all hover:bg-gold-deep/90 active:scale-95 cursor-pointer shadow-lg"
+                >
+                  <span className="relative font-title text-[0.72rem] uppercase tracking-[0.3em] text-paper font-bold">
+                    {weddingConfig.invitation.doorsButtonText || 'Open Invitation'}
+                  </span>
+                </button>
+
+                <p className="mt-3 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                  {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
+                </p>
+              </div>
+            </div>
           )}
         </div>
       )}

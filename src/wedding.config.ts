@@ -8,7 +8,6 @@
  *     - bride.jpg (Bride portrait)
  *     - groom.jpg (Groom portrait)
  *     - banner.jpg (Parallax quote banner)
- *     - gallery-1.jpg to gallery-4.jpg (Gallery moments)
  *     - music.mp3 (Background music)
  * 
  * 2. Edit all names, dates, parents, events, and venue details below.
@@ -20,17 +19,17 @@ export const weddingConfig = {
   // 1. COUPLE & PARENTS INFORMATION
   // -------------------------------------------------------------
   couple: {
-    bride: 'Divya',
+    bride: 'Devi Divya Deepa',
     groom: 'Nikhil',
-    hashtag: '#DivyaWedsNikhil',
+    hashtag: '#NikhilWedsDivya',
 
     brideRole: 'The bride',
-    brideParentsNote: 'Daughter of Mr. & Mrs. Sharma',
+    brideParentsNote: 'Daughter of Sri Kandregula Ramana & Smt Lalitha Kumari',
     bridePhoto: '/client-images/bride.jpg',
-    bridePhotoAlt: 'Divya, the bride',
+    bridePhotoAlt: 'Devi Divya Deepa, the bride',
 
     groomRole: 'The groom',
-    groomParentsNote: 'Son of Mr. & Mrs. Verma',
+    groomParentsNote: 'Son of Sri Allaka Mohan Rao & Smt Rajeshwari',
     groomPhoto: '/client-images/groom.jpg',
     groomPhotoAlt: 'Nikhil, the groom',
   },
@@ -39,9 +38,10 @@ export const weddingConfig = {
   // 2. DATES & CEREMONY TIME
   // -------------------------------------------------------------
   date: {
-    label: 'Sunday, 14 February 2027',
-    short: '14 . 02 . 2027',
-    muhurtham: 'Muhurtham at 9:45 AM',
+    label: 'Wednesday, 18 November 2026',
+    short: '18 . 11 . 2026',
+    muhurtham: 'Muhurtham at 11:31 PM',
+    feast: 'Lunch / Feast at 7:00 PM',
   },
 
   // -------------------------------------------------------------
@@ -50,28 +50,30 @@ export const weddingConfig = {
   invitation: {
     sanskritMantra: 'Om Sri Ganeshaya Namaha',
     invitationLine: 'With the blessings of our families, we invite you to share in the joy of our wedding.',
-    familyLine: `Mr. & Mrs. Sharma • Mr. & Mrs. Verma
-warmly invite you to celebrate
-the union of two hearts`,
-    doorsButtonText: 'Tap to open the doors',
+    familyLine: `Sri Allaka Mohan Rao & Smt Rajeshwari
+•
+Sri Kandregula Ramana & Smt Lalitha Kumari
+warmly invite you to celebrate the union of two hearts`,
+    doorsButtonText: 'Open Invitation',
     doorsSubText: 'Music will play softly',
   },
 
   // -------------------------------------------------------------
-  // 4. VENUE & GOOGLE MAPS LOCATION
+  // 4. MAIN VENUE & GOOGLE MAPS LOCATION
   // -------------------------------------------------------------
   venue: {
-    name: 'Sri Kalyana Mandapam',
-    city: 'Chennai, Tamil Nadu',
-    cityName: 'Chennai', // Shows in "Join us in [City]"
-    locationUnderMap: 'Chennai · Tamil Nadu · 14 . 02 . 2027', // Text displayed directly under the map frame
-    description: 'Follow the golden path to Sri Kalyana Mandapam, where our families will be waiting to welcome you.',
+    name: 'Lakeberry Farm House',
+    city: 'Hyderabad, Telangana',
+    cityName: 'Hyderabad', // Shows in "Join us in [City]"
+    address: 'Lakeberry farm house, Manchirevula, Gandhipet, Hyderabad, Telangana - 500075',
+    locationUnderMap: 'Lakeberry Farm House · Hyderabad · 18 . 11 . 2026',
+    description: 'Follow the golden path to Lakeberry Farm House, Manchirevula, Gandhipet, where our families will be waiting to welcome you.',
     
     // Direct link when clicking "Open in maps"
-    mapsSearchUrl: 'https://www.google.com/maps/search/Sri%20Kalyana%20Mandapam%20Chennai',
+    mapsSearchUrl: 'https://share.google/Z9ocMxIjSEoxIEiNC',
     
     // Interactive Google Maps iframe URL
-    mapsEmbedUrl: 'https://www.google.com/maps?q=Sri%20Kalyana%20Mandapam%20Chennai&output=embed',
+    mapsEmbedUrl: 'https://www.google.com/maps?q=Lakeberry+farm+house,+Manchirevula,+Gandhipet,+Hyderabad,+Telangana&output=embed',
   },
 
   // -------------------------------------------------------------
@@ -79,78 +81,107 @@ the union of two hearts`,
   // -------------------------------------------------------------
   banner: {
     image: '/client-images/banner.jpg',
-    alt: 'The couple exchanging flowers',
-    quote: 'Two families, one thread, and a morning we’ll remember for the rest of our lives.',
+    alt: 'Beachside floral mandapam at sunset',
+    quote: 'Two families, one sacred thread, and a beginning we’ll cherish for the rest of our lives.',
   },
 
   // -------------------------------------------------------------
-  // 6. PHOTO GALLERY (4 MOMENTS)
-  // -------------------------------------------------------------
-  gallery: [
-    {
-      image: '/client-images/gallery-1.jpg',
-      alt: 'The couple walking through a corridor',
-    },
-    {
-      image: '/client-images/gallery-2.jpg',
-      alt: 'The couple laughing together',
-    },
-    {
-      image: '/client-images/gallery-3.jpg',
-      alt: 'Hands with mehndi holding flowers',
-    },
-    {
-      image: '/client-images/gallery-4.jpg',
-      alt: 'The couple under a flower-decorated mandapam at dusk',
-    },
-  ],
-
-  // -------------------------------------------------------------
-  // 7. ORDER OF CELEBRATIONS / EVENTS
+  // 6. ORDER OF CELEBRATIONS / EVENTS (6 EVENTS)
   // -------------------------------------------------------------
   events: [
     {
-      name: 'Engagement & Sangeet',
-      day: 'Saturday, 13 Feb',
-      time: '5:00 PM',
-      place: 'Mandapam Lawns',
-      note: 'Henna, music and celebrations',
-    },
-    {
-      name: 'Muhurtham',
-      day: 'Sunday, 14 Feb',
-      time: '9:45 AM',
-      place: 'Sri Kalyana Mandapam',
-      note: 'The wedding ceremony',
-    },
-    {
-      name: 'Reception',
-      day: 'Sunday, 14 Feb',
+      id: 'mehendi',
+      name: 'Mehendi',
+      tagline: 'An Evening of Henna & Music',
+      day: 'Sunday, 15 Nov 2026',
       time: '7:00 PM',
-      place: 'Mandapam Banquet Hall',
-      note: 'Dinner and celebrations',
+      place: 'Jagsons Pride',
+      address: 'Jagsons Pride, Suraram, Hyderabad, Telangana - 500055',
+      mapsUrl: 'https://share.google/bZW3RBf20WrMq61eJ',
+      note: 'Intricate henna swirls, festive melodies, music and vibrant celebrations.',
+      dressCode: 'Traditional / Festive Indian Attire',
+    },
+    {
+      id: 'sangeet',
+      name: 'Sangeet',
+      tagline: 'Dance, Beats & Joyous Celebrations',
+      day: 'Monday, 16 Nov 2026',
+      time: '7:00 PM',
+      place: 'Jagsons Pride',
+      address: 'Jagsons Pride, Suraram, Hyderabad, Telangana - 500055',
+      mapsUrl: 'https://share.google/bZW3RBf20WrMq61eJ',
+      note: 'An evening of non-stop dance, soulful beats, and celebration with family & friends.',
+      dressCode: 'Glamorous Evening Wear / Indo-Western',
+    },
+    {
+      id: 'haldi',
+      name: 'Haldi',
+      tagline: 'Turmeric Glow & Auspicious Rites',
+      day: 'Wednesday, 18 Nov 2026',
+      time: '10:00 AM',
+      place: 'Lakeberry Farm House',
+      address: 'Lakeberry farm house, Manchirevula, Gandhipet, Hyderabad, Telangana - 500075',
+      mapsUrl: 'https://share.google/Z9ocMxIjSEoxIEiNC',
+      note: 'Turmeric blessings, laughter, auspicious rituals and vibrant golden joy.',
+      dressCode: 'Shades of Yellow & Sunshine Traditional',
+    },
+    {
+      id: 'wedding',
+      name: 'Wedding Ceremony',
+      tagline: 'Sacred Union & Auspicious Muhurtham',
+      day: 'Wednesday, 18 Nov 2026',
+      time: 'Muhurtham at 11:31 PM · Feast at 7:00 PM',
+      place: 'Lakeberry Farm House',
+      address: 'Lakeberry farm house, Manchirevula, Gandhipet, Hyderabad, Telangana - 500075',
+      mapsUrl: 'https://share.google/Z9ocMxIjSEoxIEiNC',
+      note: 'The sacred kanyadanam, jeelakarra bellam, and holy mangalsutra muhurtham uniting two souls.',
+      dressCode: 'Traditional Silk Sarees & Dhotis / Royal Ethnic',
+    },
+    {
+      id: 'reception-hyd',
+      name: 'Reception (Hyderabad)',
+      tagline: 'Celebration Dinner & Blessings',
+      day: 'Saturday, 21 Nov 2026',
+      time: '7:00 PM',
+      place: 'Jagsons Pride',
+      address: 'Jagsons Pride, Suraram, Hyderabad, Telangana - 500055',
+      mapsUrl: 'https://share.google/bZW3RBf20WrMq61eJ',
+      note: 'Dinner, heartfelt greetings, and celebrations with our near and dear ones.',
+      dressCode: 'Formal / Royal Festive Attire',
+    },
+    {
+      id: 'reception-vizag',
+      name: 'Reception (Visakhapatnam)',
+      tagline: 'Grand Reception & Feast',
+      day: 'Sunday, 29 Nov 2026',
+      time: '7:00 PM',
+      place: 'Vuda Colony, Kurmannapalem',
+      address: 'No. 46/1, Survey 7, Vuda Colony, Kurmannapalem, Gajuwaka, Andhra Pradesh - 530049',
+      mapsUrl: 'https://share.google/TqeVTybTvyzrJnVSm',
+      note: 'A grand celebration dinner welcoming family, friends, and well-wishers.',
+      dressCode: 'Festive Elegance & Traditional Attire',
     },
   ],
 
   // -------------------------------------------------------------
-  // 8. BACKGROUND MUSIC
+  // 7. BACKGROUND MUSIC
   // -------------------------------------------------------------
   music: {
     audioUrl: '/client-images/music.mp3',
   },
 
   // -------------------------------------------------------------
-  // 9. BLESSINGS WALL CONFIGURATION
+  // 8. BLESSINGS WALL CONFIGURATION
   // -------------------------------------------------------------
   blessings: {
     weddingTag: 'divya-nikhil',
     title: 'Bless the couple',
     eyebrow: 'Aashirvadam',
-    prompt: 'Leave a few words for Divya & Nikhil. Every blessing is displayed here for all guests to cherish.',
+    prompt: 'Leave a few words for Nikhil & Devi Divya Deepa. Every blessing is displayed here for all guests to cherish.',
   },
 
   // -------------------------------------------------------------
-  // 10. RSVP & DATABASE (SUPABASE & GOOGLE SHEETS)
+  // 9. RSVP & DATABASE (SUPABASE)
   // -------------------------------------------------------------
   rsvp: {
     enabled: true,
@@ -167,13 +198,14 @@ export const weddingData = {
   dateLabel: weddingConfig.date.label,
   dateShort: weddingConfig.date.short,
   muhurtham: weddingConfig.date.muhurtham,
+  feast: weddingConfig.date.feast,
   venue: weddingConfig.venue.name,
   city: weddingConfig.venue.city,
   cityName: weddingConfig.venue.cityName,
+  address: weddingConfig.venue.address,
   invitationLine: weddingConfig.invitation.invitationLine,
   familyLine: weddingConfig.invitation.familyLine,
   events: weddingConfig.events,
   banner: weddingConfig.banner,
-  gallery: weddingConfig.gallery,
   blessings: weddingConfig.blessings,
 };
