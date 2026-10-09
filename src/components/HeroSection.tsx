@@ -385,10 +385,24 @@ export const HeroSection: React.FC = () => {
       {/* Door Shadow Overlay (Clean, no darkness) */}
       <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/5" />
 
-      {/* ── Video Overlay (Plays smoothly ONLY after doors completely open, then fades out into card) ── */}
+      {/* ── First-Frame Backdrop directly behind the wooden doors ── */}
+      {/* Eliminates any white screen gap when doors part before video starts */}
+      {!videoFinished && (
+        <div className="absolute inset-0 z-20 overflow-hidden">
+          <img
+            src="/client-images/intro-poster.jpg"
+            alt=""
+            fetchPriority="high"
+            className="h-full w-full object-cover object-center"
+            style={{ width: '100vw', height: '100svh' }}
+          />
+        </div>
+      )}
+
+      {/* ── Video Overlay (Plays smoothly and fades out seamlessly into invitation card) ── */}
       {!videoFinished && (
         <div
-          className="fixed inset-0 z-[250] w-screen h-[100svh] overflow-hidden bg-white transition-opacity duration-1000 ease-out"
+          className="fixed inset-0 z-[250] w-screen h-[100svh] overflow-hidden bg-black transition-opacity duration-1000 ease-out"
           style={{
             opacity: fadingVideo ? 0 : doorsOpen ? 1 : 0,
             pointerEvents: fadingVideo || !doorsOpen ? 'none' : 'auto',
@@ -399,7 +413,9 @@ export const HeroSection: React.FC = () => {
             src="/client-images/intro-poster.jpg"
             alt=""
             fetchPriority="high"
-            className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+            className={`absolute inset-0 h-full w-full object-cover object-center pointer-events-none transition-opacity duration-300 ${
+              videoStarted ? 'opacity-0' : 'opacity-100'
+            }`}
             style={{ width: '100vw', height: '100svh' }}
           />
 
@@ -414,6 +430,7 @@ export const HeroSection: React.FC = () => {
             preload="auto"
             disablePictureInPicture
             disableRemotePlayback
+            onPlaying={() => setVideoStarted(true)}
             onTimeUpdate={handleTimeUpdate}
             onEnded={handleVideoEnd}
             onError={handleVideoEnd}
