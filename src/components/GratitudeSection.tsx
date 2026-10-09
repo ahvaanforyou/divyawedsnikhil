@@ -41,16 +41,16 @@ export const GratitudeSection: React.FC = () => {
               className="mx-auto w-20 sm:w-24"
             />
             <p className="eyebrow mt-7">With gratitude from both families</p>
-            <div className="my-4 sm:my-6 text-center px-1">
-              <h2 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+            <div className="my-3 sm:my-5 text-center px-1">
+              <h2 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
                 {weddingData.bride}
               </h2>
-              <div className="my-1.5 sm:my-2.5 flex items-center justify-center gap-2 sm:gap-3">
-                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                <span className="font-serif italic text-lg sm:text-2xl font-bold text-[#8B2500]">&amp;</span>
-                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+              <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
+                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
+                <span className="font-script text-2xl sm:text-4xl font-bold text-[#8B2500]">&amp;</span>
+                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
               </div>
-              <h2 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+              <h2 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
                 {weddingData.groom}
               </h2>
             </div>

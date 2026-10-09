@@ -148,26 +148,29 @@ export const HeroSection: React.FC = () => {
       <div className="relative z-20 w-full px-4 sm:px-5 [perspective:1400px]">
         <div className="invite-card mx-auto max-w-xl opacity-0">
           <div className="paper-card arch-top relative px-5 py-10 text-center sm:px-12 sm:py-16 shadow-2xl border-2 border-gold/60">
-            {/* Top Standard Gold Mandala */}
-            <div className="pointer-events-none absolute -top-12 sm:-top-14 left-1/2 -translate-x-1/2 flex items-center justify-center">
-              <div className="rounded-full bg-paper p-1.5 border border-gold/40 shadow-md">
-                <StandardGoldMandala className="size-20 sm:size-24 animate-[spin_32s_linear_infinite]" color="#C5A059" />
-              </div>
-            </div>
+            {/* Previous Gold Mandala */}
+            <img
+              src={assets.mandalaGold}
+              alt=""
+              aria-hidden="true"
+              width="1024"
+              height="1024"
+              className="pointer-events-none absolute -top-14 left-1/2 w-28 -translate-x-1/2 opacity-75 sm:-top-18 sm:w-36 animate-[spin_32s_linear_infinite]"
+            />
 
             <p className="invite-line eyebrow mt-6 sm:mt-7 font-title tracking-[0.3em]">{weddingData.dateShort}</p>
 
-            {/* Symmetrical Couple Names with bold standard color (NO shifting gradient) */}
-            <div className="invite-line my-4 sm:my-6 text-center px-1">
-              <h1 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+            {/* Symmetrical Couple Names with Great Vibes Font and Solid Bold Color */}
+            <div className="invite-line my-3 sm:my-5 text-center px-1">
+              <h1 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
                 {weddingData.bride}
               </h1>
-              <div className="my-1.5 sm:my-2.5 flex items-center justify-center gap-2 sm:gap-3">
-                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                <span className="font-serif italic text-lg sm:text-2xl font-bold text-[#8B2500]">&amp;</span>
-                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+              <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
+                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
+                <span className="font-script text-2xl sm:text-4xl font-bold text-[#8B2500]">&amp;</span>
+                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
               </div>
-              <h1 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+              <h1 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
                 {weddingData.groom}
               </h1>
             </div>
@@ -244,11 +247,14 @@ export const HeroSection: React.FC = () => {
                   <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
 
-                {/* Rotating Standard Gold Mandala centered above arch */}
-                <div className="pointer-events-none absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <div className="rounded-full bg-[#FAF5EC] p-1 border border-[#C5A059]/50 shadow-md">
-                    <StandardGoldMandala className="size-14 sm:size-16 animate-[spin_26s_linear_infinite]" color="#C5A059" />
-                  </div>
+                {/* Previous Gold Mandala centered above arch (no badge, solid gold image) */}
+                <div className="pointer-events-none absolute -top-9 sm:-top-11 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                  <img
+                    src={assets.mandalaGold}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-20 sm:w-24 animate-[spin_24s_linear_infinite] opacity-85"
+                  />
                 </div>
 
                 {/* Auspicious Invocation */}
@@ -261,17 +267,17 @@ export const HeroSection: React.FC = () => {
                   {weddingData.dateShort}
                 </p>
 
-                {/* Symmetrically Aligned Couple Names */}
-                <div className="w-full text-center my-3 sm:my-4 px-2">
-                  <h2 className="font-serif text-xl min-[360px]:text-2xl sm:text-3xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm">
+                {/* Symmetrically Aligned Couple Names with Great Vibes Font */}
+                <div className="w-full text-center my-2 sm:my-3 px-2">
+                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
                     {weddingData.groom}
                   </h2>
-                  <div className="my-1.5 sm:my-2 flex items-center justify-center gap-2 sm:gap-3">
+                  <div className="my-0.5 sm:my-1 flex items-center justify-center gap-2 sm:gap-3">
                     <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                    <span className="font-serif italic text-base sm:text-xl font-bold text-[#8B2500]">&amp;</span>
+                    <span className="font-script text-2xl sm:text-3xl font-bold text-[#8B2500]">&amp;</span>
                     <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
                   </div>
-                  <h2 className="font-serif text-lg min-[360px]:text-xl sm:text-2xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm">
+                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
                     {weddingData.bride}
                   </h2>
                 </div>

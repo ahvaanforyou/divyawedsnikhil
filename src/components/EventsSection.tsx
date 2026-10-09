@@ -175,51 +175,54 @@ export const EventsSection: React.FC = () => {
       {activeEvent && (
         <div
           onClick={() => setActiveEvent(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 sm:p-6 backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 sm:p-5 backdrop-blur-sm transition-opacity duration-300"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="paper-card arch-top relative max-h-[92vh] w-full max-w-lg overflow-y-auto border-2 border-gold/70 p-5 sm:p-8 text-center shadow-2xl animate-fade-in"
+            className="paper-card arch-top scrollbar-none relative max-h-[92vh] w-full max-w-lg overflow-y-auto border-2 border-gold/70 p-4 sm:p-7 text-center shadow-2xl animate-fade-in"
           >
-            {/* Close Button */}
+            {/* Highly Visible Prominent Close Button */}
             <button
               type="button"
               onClick={() => setActiveEvent(null)}
               aria-label="Close details"
-              className="absolute right-3.5 top-3.5 z-20 flex size-8 sm:size-9 items-center justify-center rounded-full border border-gold/40 bg-paper/80 text-foreground transition-all hover:bg-gold-deep hover:text-paper hover:scale-105"
+              className="absolute right-4 top-4 z-30 flex size-9 sm:size-10 items-center justify-center rounded-full border-2 border-gold-deep bg-[#FFFDF8] text-maroon shadow-md transition-all hover:bg-gold-deep hover:text-paper hover:scale-110 active:scale-95"
             >
-              <X className="size-4 sm:size-5" />
+              <X className="size-5 stroke-[2.5]" />
             </button>
 
-            {/* Top Standard Gold Mandala (standard solid color, NO shifting gradient) */}
-            <div className="mx-auto -mt-1 mb-2.5 flex justify-center">
-              <div className="rounded-full bg-paper p-1 border border-gold/40 shadow-sm">
-                <StandardGoldMandala className="size-14 sm:size-16 animate-[spin_26s_linear_infinite]" color="#C5A059" />
-              </div>
+            {/* Previous Gold Mandala (Solid color, natural float, no badge) */}
+            <div className="mx-auto -mt-1 mb-2 flex justify-center">
+              <img
+                src={assets.mandalaGold}
+                alt=""
+                aria-hidden="true"
+                className="size-14 sm:size-16 opacity-85 animate-[spin_24s_linear_infinite]"
+              />
             </div>
 
             <span className="eyebrow !tracking-[0.25em]">Celebration Details</span>
 
-            <h3 className="mt-2 font-display text-2xl sm:text-4xl text-foreground font-semibold px-2 break-words">
+            <h3 className="mt-1.5 font-display text-2xl sm:text-3xl text-foreground font-semibold px-6 break-words">
               {activeEvent.name}
             </h3>
 
             {activeEvent.tagline && (
-              <p className="mt-1 font-title text-xs uppercase tracking-wider text-gold-deep">
+              <p className="mt-0.5 font-title text-xs uppercase tracking-wider text-gold-deep">
                 {activeEvent.tagline}
               </p>
             )}
 
-            <div className="rule-gold mx-auto my-4 w-32" />
+            <div className="rule-gold mx-auto my-3 w-28" />
 
             {/* Date & Time Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
-              <div className="flex items-center gap-3 rounded-xl border border-gold/30 bg-paper/50 p-3">
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep">
-                  <Calendar className="size-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+              <div className="flex items-center gap-2.5 rounded-xl border border-gold/30 bg-paper/50 p-2.5">
+                <div className="flex size-7 sm:size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep">
+                  <Calendar className="size-3.5 sm:size-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
                     Date
                   </p>
                   <p className="font-title text-xs sm:text-sm font-semibold text-foreground">
@@ -228,12 +231,12 @@ export const EventsSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 rounded-xl border border-gold/30 bg-paper/50 p-3">
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep">
-                  <Clock className="size-4" />
+              <div className="flex items-center gap-2.5 rounded-xl border border-gold/30 bg-paper/50 p-2.5">
+                <div className="flex size-7 sm:size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep">
+                  <Clock className="size-3.5 sm:size-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
                     Time
                   </p>
                   <p className="font-title text-xs sm:text-sm font-semibold text-foreground">
@@ -244,20 +247,20 @@ export const EventsSection: React.FC = () => {
             </div>
 
             {/* Venue & Street Address */}
-            <div className="mt-2.5 rounded-xl border border-gold/30 bg-paper/50 p-3.5 text-left">
-              <div className="flex items-start gap-3">
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep mt-0.5">
-                  <MapPin className="size-4" />
+            <div className="mt-2 rounded-xl border border-gold/30 bg-paper/50 p-3 text-left">
+              <div className="flex items-start gap-2.5">
+                <div className="flex size-7 sm:size-8 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep mt-0.5">
+                  <MapPin className="size-3.5 sm:size-4" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
                     Venue &amp; Location
                   </p>
                   <p className="font-display text-base sm:text-lg font-semibold text-foreground mt-0.5 break-words">
                     {activeEvent.place}
                   </p>
                   {activeEvent.address && (
-                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed break-words">
+                    <p className="mt-0.5 text-xs text-muted-foreground leading-relaxed break-words">
                       {activeEvent.address}
                     </p>
                   )}
@@ -266,7 +269,7 @@ export const EventsSection: React.FC = () => {
             </div>
 
             {/* Interactive Google Maps Integration Embed */}
-            <div className="mt-3 overflow-hidden rounded-xl border border-gold/40 shadow-sm bg-muted/20">
+            <div className="mt-2.5 overflow-hidden rounded-xl border border-gold/40 shadow-sm bg-muted/20">
               <iframe
                 title={`Map location for ${activeEvent.place}`}
                 src={
@@ -276,7 +279,7 @@ export const EventsSection: React.FC = () => {
                   )}&output=embed`
                 }
                 width="100%"
-                height="170"
+                height="130"
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -284,7 +287,7 @@ export const EventsSection: React.FC = () => {
             </div>
 
             {/* Celebration Note */}
-            <div className="mt-2.5 rounded-xl border border-gold/25 bg-gold/5 p-3 text-center">
+            <div className="mt-2 rounded-xl border border-gold/25 bg-gold/5 p-2.5 text-center">
               <p className="font-title text-xs italic leading-relaxed text-foreground">
                 &ldquo;{activeEvent.note}&rdquo;
               </p>
@@ -292,12 +295,12 @@ export const EventsSection: React.FC = () => {
 
             {/* Dress Code (if present) */}
             {activeEvent.dressCode && (
-              <div className="mt-2.5 flex items-center gap-3 rounded-xl border border-gold/30 bg-paper/50 p-3 text-left">
+              <div className="mt-2 flex items-center gap-2.5 rounded-xl border border-gold/30 bg-paper/50 p-2.5 text-left">
                 <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep">
                   <Shirt className="size-3.5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                  <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
                     Suggested Attire
                   </p>
                   <p className="font-title text-xs font-medium text-foreground">
@@ -317,7 +320,7 @@ export const EventsSection: React.FC = () => {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 sm:mt-5 flex w-full items-center justify-center gap-2 rounded-full border border-gold/70 bg-gold-deep py-3.5 px-6 font-title text-xs uppercase tracking-[0.24em] text-paper font-bold shadow-lg transition-all duration-300 hover:bg-gold-deep/90 hover:scale-[1.01] active:scale-[0.98]"
+              className="mt-3.5 sm:mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-gold/70 bg-gold-deep py-3 px-6 font-title text-xs uppercase tracking-[0.24em] text-paper font-bold shadow-lg transition-all duration-300 hover:bg-gold-deep/90 hover:scale-[1.01] active:scale-[0.98]"
             >
               <Navigation className="size-4" />
               <span>Get Directions on Google Maps</span>
