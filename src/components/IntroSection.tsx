@@ -12,7 +12,7 @@ export const IntroSection: React.FC = () => {
 
       <RevealOnScroll>
         <p className="eyebrow">{weddingConfig.invitation.sanskritMantra || 'Om Sri Ganeshaya Namaha'}</p>
-        <p className="mx-auto mt-8 max-w-2xl whitespace-pre-line font-display text-3xl leading-snug sm:text-5xl">
+        <p className="mx-auto mt-8 max-w-2xl whitespace-pre-line font-display text-2xl min-[360px]:text-3xl sm:text-5xl leading-snug px-2">
           {weddingData.familyLine}
         </p>
         <div className="rule-gold mx-auto mt-10 w-40" />

@@ -47,9 +47,9 @@ export const ParallaxSection: React.FC = () => {
         className="parallax-img absolute -top-[15%] left-0 h-[130%] w-full object-cover object-center will-change-transform"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/50" />
-      <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-8 text-center">
-        <div className="max-w-3xl rounded-3xl bg-black/35 p-6 sm:p-10 backdrop-blur-[3px] border border-gold/40 shadow-2xl">
-          <p className="font-display text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl leading-relaxed text-[#FFFDF5] drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
+      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 text-center">
+        <div className="max-w-3xl rounded-2xl sm:rounded-3xl bg-black/40 p-5 sm:p-10 backdrop-blur-[3px] border border-gold/40 shadow-2xl">
+          <p className="font-display text-lg min-[360px]:text-xl sm:text-3xl md:text-4xl leading-relaxed text-[#FFFDF5] drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
             “{banner.quote}”
           </p>
         </div>

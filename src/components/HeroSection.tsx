@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import { assets } from '../data/assets';
 import { weddingConfig, weddingData } from '../wedding.config';
 import { playAudio } from '../lib/audio';
+import { StandardGoldMandala, TraditionalCornerDecor } from './Ornaments';
 
 const paperCards = [
   { x: -320, y: 180, r: -24, d: 0, w: 120, h: 158 },
@@ -119,13 +120,13 @@ export const HeroSection: React.FC = () => {
         opened ? 'relative' : 'fixed inset-0 z-[100]'
       } flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-background`}
     >
-      {/* Temple Backdrop */}
+      {/* Temple Backdrop (Crisp, sharp, no blur) */}
       <img
         src={assets.temple}
         alt="Temple gopuram archway"
-        className="temple pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover opacity-0 blur-[1px]"
+        className="temple pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover opacity-0"
       />
-      <div className="pointer-events-none absolute inset-0 bg-background/54" />
+      <div className="pointer-events-none absolute inset-0 bg-background/45" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[var(--gradient-veil)]" />
 
       {/* Floating Paper Cards */}
@@ -143,30 +144,42 @@ export const HeroSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Main Invitation Card */}
-      <div className="relative z-20 w-full px-5 [perspective:1400px]">
+      {/* Main Invitation Card (After Doors Open) */}
+      <div className="relative z-20 w-full px-4 sm:px-5 [perspective:1400px]">
         <div className="invite-card mx-auto max-w-xl opacity-0">
-          <div className="paper-card arch-top relative px-4 py-10 text-center sm:px-12 sm:py-16">
-            <img
-              src={assets.mandalaGold}
-              alt=""
-              aria-hidden="true"
-              width="1024"
-              height="1024"
-              className="pointer-events-none absolute -top-16 left-1/2 w-28 -translate-x-1/2 opacity-60 sm:-top-20 sm:w-36"
-            />
-            <p className="invite-line eyebrow mt-6">{weddingData.dateShort}</p>
-            <h1 className="invite-line mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-display text-2xl min-[360px]:text-3xl min-[480px]:text-5xl sm:text-6xl md:text-7xl leading-[1.08] break-words">
-              <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
-              <span className="mx-1.5 font-title text-base sm:text-2xl md:text-3xl align-middle text-maroon">&amp;</span>
-              <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
-            </h1>
-            <div className="invite-line rule-gold mx-auto mt-8 w-2/3" />
-            <p className="invite-line mx-auto mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          <div className="paper-card arch-top relative px-5 py-10 text-center sm:px-12 sm:py-16 shadow-2xl border-2 border-gold/60">
+            {/* Top Standard Gold Mandala */}
+            <div className="pointer-events-none absolute -top-12 sm:-top-14 left-1/2 -translate-x-1/2 flex items-center justify-center">
+              <div className="rounded-full bg-paper p-1.5 border border-gold/40 shadow-md">
+                <StandardGoldMandala className="size-20 sm:size-24 animate-[spin_32s_linear_infinite]" color="#C5A059" />
+              </div>
+            </div>
+
+            <p className="invite-line eyebrow mt-6 sm:mt-7 font-title tracking-[0.3em]">{weddingData.dateShort}</p>
+
+            {/* Symmetrical Couple Names with bold standard color (NO shifting gradient) */}
+            <div className="invite-line my-4 sm:my-6 text-center px-1">
+              <h1 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+                {weddingData.bride}
+              </h1>
+              <div className="my-1.5 sm:my-2.5 flex items-center justify-center gap-2 sm:gap-3">
+                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
+                <span className="font-serif italic text-lg sm:text-2xl font-bold text-[#8B2500]">&amp;</span>
+                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+              </div>
+              <h1 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#5A1A1A] leading-tight break-words">
+                {weddingData.groom}
+              </h1>
+            </div>
+
+            <div className="invite-line rule-gold mx-auto my-4 w-2/3" />
+            <p className="invite-line mx-auto mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-muted-foreground px-2">
               {weddingData.invitationLine}
             </p>
-            <p className="invite-line mt-8 font-title text-lg tracking-wide">{weddingData.dateLabel}</p>
-            <p className="invite-line mt-1 text-sm text-muted-foreground">
+            <p className="invite-line mt-6 sm:mt-7 font-title text-base sm:text-lg tracking-wide text-foreground font-semibold">
+              {weddingData.dateLabel}
+            </p>
+            <p className="invite-line mt-1 text-xs sm:text-sm text-muted-foreground">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
             {weddingData.feast && (
@@ -175,7 +188,7 @@ export const HeroSection: React.FC = () => {
               </p>
             )}
 
-            {/* Scroll Down Indicator (matching Hanisha style, inside card) */}
+            {/* Scroll Down Indicator (inside card) */}
             <a
               href="#intro"
               onClick={(e) => {
@@ -201,66 +214,88 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Temple Doors ── */}
+      {/* ── Temple Doors (Bright, sharp, no blur) ── */}
       {!opened && (
         <div className="doors-container absolute inset-0 z-30 flex [perspective:1600px]">
           <div
             className="door-l relative h-full w-1/2 origin-left bg-cover bg-right"
             style={{ backgroundImage: `url(${assets.templeDoor})`, transformStyle: 'preserve-3d' }}
-          >
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/50 to-transparent" />
-          </div>
+          />
           <div
             className="door-r relative h-full w-1/2 origin-right bg-cover bg-left"
             style={{ backgroundImage: `url(${assets.templeDoor})`, transformStyle: 'preserve-3d' }}
-          >
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/50 to-transparent" />
-          </div>
+          />
 
-          {/* Centered Arch-Top Tiny Card Overlay on top of closed doors (similar to Hitesh's wedding) */}
+          {/* Centered Arch-Top Card Overlay with Traditional Decor */}
           {!clicked && (
             <div
               onClick={handleOpen}
-              className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px] px-4 transition-opacity duration-500 ease-out cursor-pointer"
+              className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center px-4 transition-opacity duration-500 ease-out cursor-pointer"
             >
-              <div className="paper-card arch-top relative flex flex-col items-center px-7 py-9 text-center sm:px-12 sm:py-12 w-[90%] max-w-[340px] sm:max-w-md border border-gold/50 shadow-2xl">
-                {/* Spinning gold mandala centered above card */}
-                <div className="pointer-events-none absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2">
-                  <img
-                    src={assets.mandalaGold}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-20 sm:w-24 animate-[spin_16s_linear_infinite] opacity-80"
-                  />
+              <div className="relative flex flex-col items-center px-6 py-8 text-center sm:px-10 sm:py-10 w-[92%] max-w-[340px] sm:max-w-[400px] rounded-t-[140px] sm:rounded-t-[170px] rounded-b-2xl border-2 border-[#C5A059] bg-gradient-to-b from-[#FFFDF8] via-[#FAF5EC] to-[#F5ECE0] shadow-[0_25px_60px_-12px_rgba(80,25,10,0.45)]">
+                {/* Delicate inner gold border */}
+                <div className="pointer-events-none absolute inset-1.5 sm:inset-2 rounded-t-[132px] sm:rounded-t-[162px] rounded-b-xl border border-[#C5A059]/40" />
+                
+                {/* Traditional Corner Decor on bottom corners */}
+                <div className="pointer-events-none absolute bottom-2 left-2 w-5 sm:w-6 opacity-60">
+                  <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
+                </div>
+                <div className="pointer-events-none absolute bottom-2 right-2 w-5 sm:w-6 opacity-60 -scale-x-100">
+                  <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
 
-                {/* Date */}
-                <p className="eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs text-gold-deep">{weddingData.dateShort}</p>
+                {/* Rotating Standard Gold Mandala centered above arch */}
+                <div className="pointer-events-none absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                  <div className="rounded-full bg-[#FAF5EC] p-1 border border-[#C5A059]/50 shadow-md">
+                    <StandardGoldMandala className="size-14 sm:size-16 animate-[spin_26s_linear_infinite]" color="#C5A059" />
+                  </div>
+                </div>
 
-                {/* Names */}
-                <h2 className="mt-3 sm:mt-4 mb-2 flex flex-wrap items-center justify-center gap-x-2 font-display text-2xl sm:text-3xl md:text-4xl leading-tight text-foreground font-semibold">
-                  <span>{weddingData.groom}</span>
-                  <span className="font-title text-base sm:text-lg text-maroon">&amp;</span>
-                  <span>{weddingData.bride}</span>
-                </h2>
+                {/* Auspicious Invocation */}
+                <p className="mt-7 sm:mt-8 font-title text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-[#8B2500] font-bold">
+                  || OM SRI GANESHAYA NAMAHA ||
+                </p>
+
+                {/* Date */}
+                <p className="eyebrow mt-1 text-[0.66rem] sm:text-xs text-gold-deep font-semibold">
+                  {weddingData.dateShort}
+                </p>
+
+                {/* Symmetrically Aligned Couple Names */}
+                <div className="w-full text-center my-3 sm:my-4 px-2">
+                  <h2 className="font-serif text-xl min-[360px]:text-2xl sm:text-3xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm">
+                    {weddingData.groom}
+                  </h2>
+                  <div className="my-1.5 sm:my-2 flex items-center justify-center gap-2 sm:gap-3">
+                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
+                    <span className="font-serif italic text-base sm:text-xl font-bold text-[#8B2500]">&amp;</span>
+                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+                  </div>
+                  <h2 className="font-serif text-lg min-[360px]:text-xl sm:text-2xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm">
+                    {weddingData.bride}
+                  </h2>
+                </div>
 
                 {/* Auspicious Divider */}
-                <div className="rule-gold mx-auto my-3 w-24 sm:w-28 opacity-70" />
+                <div className="rule-gold mx-auto my-2 w-28 sm:w-36 opacity-75" />
 
                 {/* Tap to open button */}
                 <button
                   type="button"
                   onClick={handleOpen}
                   aria-label="Open the wedding invitation"
-                  className="group relative mt-2 overflow-hidden rounded-full border border-gold/70 bg-gold-deep px-7 py-3 transition-all hover:bg-gold-deep/90 active:scale-95 cursor-pointer shadow-lg"
+                  className="group relative mt-2 sm:mt-3 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-7 sm:px-8 py-3 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(184,134,11,0.35)]"
                 >
-                  <span className="relative font-title text-[0.72rem] uppercase tracking-[0.3em] text-paper font-bold">
+                  <span className="relative flex items-center gap-2 font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#2C1802] font-bold">
+                    <Sparkles className="size-3.5 text-[#2C1802]" />
                     {weddingConfig.invitation.doorsButtonText || 'Open Invitation'}
+                    <Sparkles className="size-3.5 text-[#2C1802]" />
                   </span>
                 </button>
 
-                <p className="mt-3 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                  {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
+                <p className="mt-2.5 text-[0.62rem] sm:text-xs uppercase tracking-[0.22em] text-muted-foreground flex items-center gap-1.5 justify-center">
+                  <span>🎵</span>
+                  <span>{weddingConfig.invitation.doorsSubText || 'Music will play softly'}</span>
                 </p>
               </div>
             </div>
@@ -268,8 +303,8 @@ export const HeroSection: React.FC = () => {
         </div>
       )}
 
-      {/* Door Shadow Overlay */}
-      <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/25" />
+      {/* Door Shadow Overlay (Clean, no darkness) */}
+      <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/5" />
     </section>
   );
 };

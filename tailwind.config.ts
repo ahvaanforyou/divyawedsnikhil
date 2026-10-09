@@ -50,6 +50,9 @@ export default {
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         title: ['"Marcellus"', 'Georgia', 'serif'],
+        traditional: ['"Cinzel Decorative"', 'Georgia', 'serif'],
+        script: ['"Great Vibes"', 'cursive'],
+        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Karla"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
