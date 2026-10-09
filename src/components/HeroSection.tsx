@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { assets } from '../data/assets';
 import { weddingConfig, weddingData } from '../wedding.config';
 import { playAudio } from '../lib/audio';
-import { StandardGoldMandala, TraditionalCornerDecor } from './Ornaments';
+import { TraditionalCornerDecor } from './Ornaments';
 
 const paperCards = [
   { x: -320, y: 180, r: -24, d: 0, w: 120, h: 158 },
@@ -17,11 +17,18 @@ const paperCards = [
 
 export const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const [opened, setOpened] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const doorTlRef = useRef<gsap.core.Timeline | null>(null);
+  const cardTlRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Lock scroll until opened
+  const [doorsOpen, setDoorsOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const [fadingVideo, setFadingVideo] = useState(false);
+  const [videoFinished, setVideoFinished] = useState(false);
+  const [opened, setOpened] = useState(false);
+
+  // Lock scroll until video ends and whole invitation card is open
   useEffect(() => {
     const docEl = document.documentElement;
     if (opened) {
@@ -53,7 +60,30 @@ export const HeroSection: React.FC = () => {
     };
   }, [opened]);
 
-  // Setup GSAP animation
+  // Video Finish & Transition to Main Invitation
+  const handleVideoEnd = useCallback(() => {
+    if (videoFinished || fadingVideo) return;
+    setFadingVideo(true);
+
+    // Play card reveal timeline as video fades out
+    cardTlRef.current?.play();
+
+    setTimeout(() => {
+      setVideoFinished(true);
+      setOpened(true);
+    }, 1100);
+  }, [videoFinished, fadingVideo]);
+
+  // Smooth pre-emptive fadeout before last frame to avoid any freeze
+  const handleTimeUpdate = useCallback(() => {
+    const vid = videoRef.current;
+    if (!vid || fadingVideo || videoFinished) return;
+    if (vid.duration && vid.duration > 2 && vid.currentTime >= vid.duration - 0.7) {
+      handleVideoEnd();
+    }
+  }, [fadingVideo, videoFinished, handleVideoEnd]);
+
+  // Setup GSAP door open and invitation reveal animations
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -61,17 +91,31 @@ export const HeroSection: React.FC = () => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
+      // 1. Door opening timeline
+      const doorTl = gsap.timeline({
+        paused: true,
+        onComplete: () => {
+          setDoorsOpen(true);
+        },
+      });
+
+      doorTl
+        .to('.doors-button', { autoAlpha: 0, duration: 0.25, pointerEvents: 'none', ease: 'power2.out' }, 'open')
+        .to('.door-l', { rotateY: -104, duration: prefersReduced ? 0.3 : 1.9, ease: 'power3.inOut' }, 'open')
+        .to('.door-r', { rotateY: 104, duration: prefersReduced ? 0.3 : 1.9, ease: 'power3.inOut' }, 'open')
+        .to('.doors-container', { autoAlpha: 0, duration: 0.35, pointerEvents: 'none', ease: 'power2.out' }, 'open+=1.8')
+        .to('.door-shadow', { autoAlpha: 0, duration: 1.2 }, 'open');
+
+      doorTlRef.current = doorTl;
+
+      // 2. Invitation card reveal timeline (plays after video fades out)
+      const cardTl = gsap.timeline({
         paused: true,
         onComplete: () => setOpened(true),
       });
 
-      tl.to('.doors-button', { autoAlpha: 0, duration: 0.25, pointerEvents: 'none', ease: 'power2.out' }, 'open')
-        .to('.door-l', { rotateY: -104, duration: prefersReduced ? 0.3 : 2.1, ease: 'power3.inOut' }, 'open')
-        .to('.door-r', { rotateY: 104, duration: prefersReduced ? 0.3 : 2.1, ease: 'power3.inOut' }, 'open')
-        .to('.doors-container', { autoAlpha: 0, duration: 0.4, pointerEvents: 'none', ease: 'power2.out', onComplete: () => setOpened(true) }, 'open+=1.9')
-        .to('.door-shadow', { autoAlpha: 0, duration: 1.4 }, 'open')
-        .fromTo('.temple', { scale: 1.18, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 2.2, ease: 'power2.out' }, 'open+=0.2')
+      cardTl
+        .fromTo('.temple', { scale: 1.18, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 2.0, ease: 'power2.out' }, 0)
         .fromTo(
           '.paper',
           { autoAlpha: 0, x: 0, y: 60, scale: 0.4, rotate: 0 },
@@ -81,36 +125,60 @@ export const HeroSection: React.FC = () => {
             y: (i) => paperCards[i].y,
             scale: 1,
             rotate: (i) => paperCards[i].r,
-            duration: 1.9,
+            duration: 1.8,
             ease: 'power2.out',
             stagger: 0.07,
           },
-          'open+=0.85'
+          0.3
         )
         .fromTo(
           '.invite-card',
-          { autoAlpha: 0, y: 140, scale: 0.62, rotateX: 42 },
-          { autoAlpha: 1, y: 0, scale: 1, rotateX: 0, duration: 1.6, ease: 'power4.out' },
-          'open+=1.15'
+          { autoAlpha: 0, y: 130, scale: 0.65, rotateX: 35 },
+          { autoAlpha: 1, y: 0, scale: 1, rotateX: 0, duration: 1.5, ease: 'power4.out' },
+          0.5
         )
         .fromTo(
           '.invite-line',
-          { autoAlpha: 0, y: 22 },
-          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.13, ease: 'power3.out' },
-          '-=0.85'
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
+          '-=0.7'
         );
 
-      tlRef.current = tl;
+      cardTlRef.current = cardTl;
     }, section);
 
     return () => ctx.revert();
   }, []);
 
+  // User taps "Open Invitation"
   const handleOpen = () => {
     if (clicked) return;
     setClicked(true);
+
+    // 1. Start audio immediately on direct user gesture
     playAudio();
-    tlRef.current?.play();
+
+    // 2. Play door opening animation
+    doorTlRef.current?.play();
+
+    // 3. Start video seamlessly behind opening doors so it's playing as doors part
+    const vid = videoRef.current;
+    if (vid) {
+      vid.muted = true;
+      vid.defaultMuted = true;
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setVideoStarted(true);
+          })
+          .catch((err) => {
+            console.warn('Video autoplay issue:', err);
+            // Fallback: if browser blocks video, proceed smoothly
+            handleVideoEnd();
+          });
+      }
+    }
   };
 
   return (
@@ -309,6 +377,62 @@ export const HeroSection: React.FC = () => {
 
       {/* Door Shadow Overlay (Clean, no darkness) */}
       <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/5" />
+
+      {/* ── Video Overlay (Plays smoothly after doors part, fades out seamlessly into invitation card) ── */}
+      {!videoFinished && (
+        <div
+          className="fixed inset-0 z-[250] w-screen h-[100svh] overflow-hidden bg-white transition-opacity duration-1000 ease-out"
+          style={{
+            opacity: fadingVideo ? 0 : doorsOpen || videoStarted ? 1 : 0,
+            pointerEvents: fadingVideo || !doorsOpen ? 'none' : 'auto',
+          }}
+        >
+          {/* Instant First-Frame Poster (Zero blank screen delay) */}
+          <img
+            src="/client-images/intro-poster.jpg"
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+            style={{ width: '100vw', height: '100svh' }}
+          />
+
+          {/* HTML5 Video element configured for iOS Safari & Android mobile autoplay compatibility */}
+          <video
+            ref={videoRef}
+            src="/client-images/intro.mp4"
+            poster="/client-images/intro-poster.jpg"
+            muted
+            playsInline
+            autoPlay={false}
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={handleVideoEnd}
+            onError={handleVideoEnd}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            style={{
+              width: '100vw',
+              height: '100svh',
+              transform: 'translateZ(0)',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
+            }}
+          />
+
+          {/* Skip Intro button — appears gently once video is playing */}
+          {doorsOpen && !fadingVideo && (
+            <button
+              type="button"
+              onClick={handleVideoEnd}
+              aria-label="Skip video"
+              className="absolute bottom-6 right-5 z-20 rounded-full border border-gold/70 bg-black/50 px-5 py-2 font-title text-[0.7rem] uppercase tracking-[0.22em] text-[#FFFDF5] font-semibold shadow-2xl backdrop-blur-md transition-all duration-300 hover:bg-black/75 hover:scale-105 active:scale-95 cursor-pointer sm:bottom-10 sm:right-10"
+            >
+              Skip
+            </button>
+          )}
+        </div>
+      )}
     </section>
   );
 };
