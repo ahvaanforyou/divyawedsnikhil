@@ -148,15 +148,15 @@ export const HeroSection: React.FC = () => {
       <div className="relative z-20 w-full px-4 sm:px-5 [perspective:1400px]">
         <div className="invite-card mx-auto max-w-xl opacity-0">
           <div className="paper-card arch-top relative px-5 py-10 text-center sm:px-12 sm:py-16 shadow-2xl border-2 border-gold/60">
-            {/* Previous Gold Mandala */}
-            <img
-              src={assets.mandalaGold}
-              alt=""
-              aria-hidden="true"
-              width="1024"
-              height="1024"
-              className="pointer-events-none absolute -top-14 left-1/2 w-28 -translate-x-1/2 opacity-75 sm:-top-18 sm:w-36 animate-[spin_32s_linear_infinite]"
-            />
+            {/* Darker Gold Mandala (Centered in wrapper so it rotates in-place without horizontal drift) */}
+            <div className="pointer-events-none absolute -top-14 sm:-top-18 left-1/2 -translate-x-1/2 flex items-center justify-center">
+              <img
+                src={assets.mandalaGold}
+                alt=""
+                aria-hidden="true"
+                className="w-28 sm:w-36 origin-center animate-[spin_32s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
+              />
+            </div>
 
             <p className="invite-line eyebrow mt-6 sm:mt-7 font-title tracking-[0.3em]">{weddingData.dateShort}</p>
 
@@ -247,13 +247,13 @@ export const HeroSection: React.FC = () => {
                   <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
                 </div>
 
-                {/* Previous Gold Mandala centered above arch (no badge, solid gold image) */}
+                {/* Darker Gold Mandala centered above arch (in wrapper so it rotates in-place without horizontal drift) */}
                 <div className="pointer-events-none absolute -top-9 sm:-top-11 left-1/2 -translate-x-1/2 flex items-center justify-center">
                   <img
                     src={assets.mandalaGold}
                     alt=""
                     aria-hidden="true"
-                    className="w-20 sm:w-24 animate-[spin_24s_linear_infinite] opacity-85"
+                    className="w-20 sm:w-24 origin-center animate-[spin_24s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
                   />
                 </div>
 
@@ -267,10 +267,10 @@ export const HeroSection: React.FC = () => {
                   {weddingData.dateShort}
                 </p>
 
-                {/* Symmetrically Aligned Couple Names with Great Vibes Font */}
+                {/* Symmetrically Aligned Couple Names with Great Vibes Font (Bride first, then Groom) */}
                 <div className="w-full text-center my-2 sm:my-3 px-2">
                   <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
-                    {weddingData.groom}
+                    {weddingData.bride}
                   </h2>
                   <div className="my-0.5 sm:my-1 flex items-center justify-center gap-2 sm:gap-3">
                     <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
@@ -278,30 +278,28 @@ export const HeroSection: React.FC = () => {
                     <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
                   </div>
                   <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
-                    {weddingData.bride}
+                    {weddingData.groom}
                   </h2>
                 </div>
 
                 {/* Auspicious Divider */}
                 <div className="rule-gold mx-auto my-2 w-28 sm:w-36 opacity-75" />
 
-                {/* Tap to open button */}
+                {/* Tap to open button (no star emojis) */}
                 <button
                   type="button"
                   onClick={handleOpen}
                   aria-label="Open the wedding invitation"
-                  className="group relative mt-2 sm:mt-3 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-7 sm:px-8 py-3 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(184,134,11,0.35)]"
+                  className="group relative mt-2 sm:mt-3 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-8 py-3 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(184,134,11,0.35)]"
                 >
-                  <span className="relative flex items-center gap-2 font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#2C1802] font-bold">
-                    <Sparkles className="size-3.5 text-[#2C1802]" />
+                  <span className="relative font-title text-xs sm:text-sm uppercase tracking-[0.28em] text-[#2C1802] font-bold">
                     {weddingConfig.invitation.doorsButtonText || 'Open Invitation'}
-                    <Sparkles className="size-3.5 text-[#2C1802]" />
                   </span>
                 </button>
 
-                <p className="mt-2.5 text-[0.62rem] sm:text-xs uppercase tracking-[0.22em] text-muted-foreground flex items-center gap-1.5 justify-center">
-                  <span>🎵</span>
-                  <span>{weddingConfig.invitation.doorsSubText || 'Music will play softly'}</span>
+                {/* Subtitle (no music emoji) */}
+                <p className="mt-2.5 text-[0.62rem] sm:text-xs uppercase tracking-[0.24em] text-muted-foreground text-center">
+                  {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
                 </p>
               </div>
             </div>

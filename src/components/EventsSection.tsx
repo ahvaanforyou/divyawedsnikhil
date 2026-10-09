@@ -175,29 +175,29 @@ export const EventsSection: React.FC = () => {
       {activeEvent && (
         <div
           onClick={() => setActiveEvent(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 sm:p-5 backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-5 backdrop-blur-md transition-opacity duration-300"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="paper-card arch-top scrollbar-none relative max-h-[92vh] w-full max-w-lg overflow-y-auto border-2 border-gold/70 p-4 sm:p-7 text-center shadow-2xl animate-fade-in"
+            className="paper-card scrollbar-none relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-[28px] sm:rounded-[36px] border-2 border-gold/70 bg-[#FFFDF8] p-4 sm:p-7 text-center shadow-2xl animate-fade-in"
           >
-            {/* Highly Visible Prominent Close Button */}
+            {/* Highly Visible Prominent Close Button (Cleanly positioned inside card frame, no cut-out) */}
             <button
               type="button"
               onClick={() => setActiveEvent(null)}
               aria-label="Close details"
-              className="absolute right-4 top-4 z-30 flex size-9 sm:size-10 items-center justify-center rounded-full border-2 border-gold-deep bg-[#FFFDF8] text-maroon shadow-md transition-all hover:bg-gold-deep hover:text-paper hover:scale-110 active:scale-95"
+              className="absolute right-3.5 top-3.5 sm:right-5 sm:top-5 z-30 flex size-9 sm:size-10 items-center justify-center rounded-full border-2 border-gold-deep bg-paper text-maroon shadow-md transition-all hover:bg-gold-deep hover:text-paper hover:scale-110 active:scale-95 cursor-pointer"
             >
               <X className="size-5 stroke-[2.5]" />
             </button>
 
-            {/* Previous Gold Mandala (Solid color, natural float, no badge) */}
+            {/* Darker Gold Mandala (Natural float, no badge, deep rich gold) */}
             <div className="mx-auto -mt-1 mb-2 flex justify-center">
               <img
                 src={assets.mandalaGold}
                 alt=""
                 aria-hidden="true"
-                className="size-14 sm:size-16 opacity-85 animate-[spin_24s_linear_infinite]"
+                className="size-14 sm:size-16 origin-center animate-[spin_24s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
               />
             </div>
 
