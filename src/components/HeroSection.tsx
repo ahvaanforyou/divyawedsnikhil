@@ -96,6 +96,24 @@ export const HeroSection: React.FC = () => {
         paused: true,
         onComplete: () => {
           setDoorsOpen(true);
+
+          // Video starts ONLY after doors completely finish opening
+          const vid = videoRef.current;
+          if (vid) {
+            vid.muted = true;
+            vid.defaultMuted = true;
+            const playPromise = vid.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  setVideoStarted(true);
+                })
+                .catch((err) => {
+                  console.warn('Video playback error:', err);
+                  handleVideoEnd();
+                });
+            }
+          }
         },
       });
 
@@ -158,27 +176,16 @@ export const HeroSection: React.FC = () => {
     // 1. Start audio immediately on direct user gesture
     playAudio();
 
-    // 2. Play door opening animation
-    doorTlRef.current?.play();
-
-    // 3. Start video seamlessly behind opening doors so it's playing as doors part
+    // 2. Prime video on user gesture so browser grants autoplay permission when doors finish
     const vid = videoRef.current;
     if (vid) {
       vid.muted = true;
       vid.defaultMuted = true;
-      const playPromise = vid.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setVideoStarted(true);
-          })
-          .catch((err) => {
-            console.warn('Video autoplay issue:', err);
-            // Fallback: if browser blocks video, proceed smoothly
-            handleVideoEnd();
-          });
-      }
+      vid.load();
     }
+
+    // 3. Play door opening animation
+    doorTlRef.current?.play();
   };
 
   return (
@@ -378,12 +385,12 @@ export const HeroSection: React.FC = () => {
       {/* Door Shadow Overlay (Clean, no darkness) */}
       <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/5" />
 
-      {/* ── Video Overlay (Plays smoothly after doors part, fades out seamlessly into invitation card) ── */}
+      {/* ── Video Overlay (Plays smoothly ONLY after doors completely open, then fades out into card) ── */}
       {!videoFinished && (
         <div
           className="fixed inset-0 z-[250] w-screen h-[100svh] overflow-hidden bg-white transition-opacity duration-1000 ease-out"
           style={{
-            opacity: fadingVideo ? 0 : doorsOpen || videoStarted ? 1 : 0,
+            opacity: fadingVideo ? 0 : doorsOpen ? 1 : 0,
             pointerEvents: fadingVideo || !doorsOpen ? 'none' : 'auto',
           }}
         >
