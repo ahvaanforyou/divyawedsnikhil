@@ -41,19 +41,11 @@ export const GratitudeSection: React.FC = () => {
               className="mx-auto w-20 sm:w-24"
             />
             <p className="eyebrow mt-7">With gratitude from both families</p>
-            <div className="my-3 sm:my-5 text-center px-1">
-              <h2 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
-                {weddingData.bride}
-              </h2>
-              <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
-                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                <span className="font-script text-2xl sm:text-4xl font-bold text-[#8B2500]">&amp;</span>
-                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
-              </div>
-              <h2 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
-                {weddingData.groom}
-              </h2>
-            </div>
+            <h2 className="my-4 sm:my-6 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+              <span>Divya</span>
+              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
+              <span>Nikhil</span>
+            </h2>
             <p className="mt-5 sm:mt-7 font-title text-sm uppercase tracking-[0.32em] text-maroon sm:text-base">
               Thank you for blessing us
             </p>

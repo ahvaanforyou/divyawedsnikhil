@@ -21,5 +21,6 @@ export const assets = {
   lotusDivider: '/assets/lotus-divider.png',
   kalash: '/assets/kalash.png',
   coupleNamaste: '/assets/couple-namaste.png',
+  coupleLogo: '/client-images/couple-logo.png',
   music: '/assets/wedding-ambience.mp3',
 };

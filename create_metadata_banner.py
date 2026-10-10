@@ -165,7 +165,7 @@ def create_banner():
     draw_centered_text('Wednesday, 18 November 2026', cur_y, f_date, (255, 225, 115, 255), (0, 0, 0, 200))
     cur_y += 42
 
-    draw_centered_text('Muhurtham at 11:31 PM IST  ·  Lunch at 7:00 PM', cur_y, f_time, (245, 235, 220, 230), (0, 0, 0, 180))
+    draw_centered_text('Muhurtham at 11:31 PM IST  ·  Dinner at 7:00 PM', cur_y, f_time, (245, 235, 220, 230), (0, 0, 0, 180))
     cur_y += 34
 
     draw_centered_text('Lakeberry Farm House  •  Hyderabad, Telangana', cur_y, f_venue, (220, 195, 140, 220), (0, 0, 0, 180))

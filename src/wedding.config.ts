@@ -41,7 +41,7 @@ export const weddingConfig = {
     label: 'Wednesday, 18 November 2026',
     short: '18 . 11 . 2026',
     muhurtham: 'Muhurtham at 11:31 PM',
-    feast: 'Lunch / Feast at 7:00 PM',
+    feast: 'Dinner / Feast at 7:00 PM',
   },
 
   // -------------------------------------------------------------
@@ -54,7 +54,7 @@ export const weddingConfig = {
 •
 Sri Kandregula Ramana & Smt Lalitha Kumari
 warmly invite you to celebrate the union of two hearts`,
-    doorsButtonText: 'Open Invitation',
+    doorsButtonText: 'TAP TO OPEN THE INVITATION',
     doorsSubText: 'Music will play softly',
   },
 

@@ -228,20 +228,12 @@ export const HeroSection: React.FC = () => {
 
             <p className="invite-line eyebrow mt-6 sm:mt-7 font-title tracking-[0.3em]">{weddingData.dateShort}</p>
 
-            {/* Symmetrical Couple Names with Great Vibes Font and Solid Bold Color */}
-            <div className="invite-line my-3 sm:my-5 text-center px-1">
-              <h1 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
-                {weddingData.bride}
-              </h1>
-              <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
-                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                <span className="font-script text-2xl sm:text-4xl font-bold text-[#8B2500]">&amp;</span>
-                <div className="h-[1px] w-10 sm:w-20 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
-              </div>
-              <h1 className="font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal text-[#5A1A1A] leading-tight break-words">
-                {weddingData.groom}
-              </h1>
-            </div>
+            {/* Couple Names on Same Line with Imperial Script Font (from Hitesh wedding invitation) */}
+            <h1 className="invite-line my-4 sm:my-6 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+              <span>Divya</span>
+              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
+              <span>Nikhil</span>
+            </h1>
 
             <div className="invite-line rule-gold mx-auto my-4 w-2/3" />
             <p className="invite-line mx-auto mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-muted-foreground px-2">
@@ -297,79 +289,37 @@ export const HeroSection: React.FC = () => {
             style={{ backgroundImage: `url(${assets.templeDoor})`, transformStyle: 'preserve-3d' }}
           />
 
-          {/* Centered Arch-Top Card Overlay with Traditional Decor */}
+          {/* Centered Monogram Logo & Button (No White Card) */}
           {!clicked && (
             <div
               onClick={handleOpen}
-              className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center px-4 transition-opacity duration-500 ease-out cursor-pointer"
+              className="doors-button absolute inset-0 z-40 flex flex-col items-center justify-center px-4 transition-opacity duration-500 ease-out cursor-pointer select-none"
             >
-              <div className="relative flex flex-col items-center px-6 py-9 text-center sm:px-10 sm:py-12 w-[94%] max-w-[360px] sm:max-w-[430px] rounded-t-[150px] sm:rounded-t-[185px] rounded-b-2xl border-2 border-[#C5A059] bg-gradient-to-b from-[#FFFDF8] via-[#FAF5EC] to-[#F5ECE0] shadow-[0_25px_60px_-12px_rgba(80,25,10,0.45)]">
-                {/* Delicate inner gold border */}
-                <div className="pointer-events-none absolute inset-1.5 sm:inset-2.5 rounded-t-[142px] sm:rounded-t-[175px] rounded-b-xl border border-[#C5A059]/40" />
-                
-                {/* Traditional Corner Decor on bottom corners */}
-                <div className="pointer-events-none absolute bottom-2.5 left-2.5 w-5 sm:w-6 opacity-60">
-                  <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
-                </div>
-                <div className="pointer-events-none absolute bottom-2.5 right-2.5 w-5 sm:w-6 opacity-60 -scale-x-100">
-                  <TraditionalCornerDecor className="w-full h-full" color="#C5A059" />
-                </div>
-
-                {/* Darker Gold Mandala: half above arch, half visible on the ivory card */}
-                <div className="pointer-events-none absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <img
-                    src={assets.mandalaGold}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-20 sm:w-24 origin-center animate-[spin_24s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
-                  />
-                </div>
-
-                {/* Auspicious Invocation (clears the lower half of the mandala gracefully) */}
-                <p className="mt-8 sm:mt-10 font-title text-[9.5px] sm:text-[11px] tracking-[0.3em] uppercase text-[#8B2500] font-bold">
-                  || OM SRI GANESHAYA NAMAHA ||
-                </p>
-
-                {/* Date */}
-                <p className="eyebrow mt-1 text-[0.68rem] sm:text-xs text-gold-deep font-semibold">
-                  {weddingData.dateShort}
-                </p>
-
-                {/* Symmetrically Aligned Couple Names with Great Vibes Font */}
-                <div className="w-full text-center my-2.5 sm:my-3.5 px-3">
-                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
-                    {weddingData.bride}
-                  </h2>
-                  <div className="my-1 sm:my-1.5 flex items-center justify-center gap-2 sm:gap-3">
-                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-                    <span className="font-script text-2xl sm:text-3xl font-bold text-[#8B2500]">&amp;</span>
-                    <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
-                  </div>
-                  <h2 className="font-script text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-wide text-[#5C1D1D] drop-shadow-sm leading-tight">
-                    {weddingData.groom}
-                  </h2>
-                </div>
-
-                {/* Auspicious Divider */}
-                <div className="rule-gold mx-auto my-2 w-28 sm:w-36 opacity-75" />
-
-                {/* Tap to open button */}
-                <button
-                  type="button"
-                  onClick={handleOpen}
-                  aria-label="Open the wedding invitation"
-                  className="group relative mt-2.5 sm:mt-3.5 overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-8 py-3 transition-all duration-300 hover:brightness-110 active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(184,134,11,0.35)]"
-                >
-                  <span className="relative font-title text-xs sm:text-sm uppercase tracking-[0.28em] text-[#2C1802] font-bold">
-                    {weddingConfig.invitation.doorsButtonText || 'Open Invitation'}
-                  </span>
-                </button>
-
-                {/* Subtitle */}
-                <p className="mt-2.5 text-[0.62rem] sm:text-xs uppercase tracking-[0.24em] text-muted-foreground text-center">
-                  {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
-                </p>
+              {/* Couple Monogram Gold Logo on Temple Doors */}
+              <div className="relative mb-5 sm:mb-7 flex items-center justify-center transition-transform duration-500 hover:scale-105 active:scale-95">
+                <img
+                  src={assets.coupleLogo}
+                  alt="Divya & Nikhil Monogram"
+                  className="w-44 sm:w-56 md:w-64 max-w-[72vw] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,0,0,0.85)] filter contrast-110 brightness-105"
+                />
               </div>
+
+              {/* Normal Button: TAP TO OPEN THE INVITATION */}
+              <button
+                type="button"
+                onClick={handleOpen}
+                aria-label="Tap to open the wedding invitation"
+                className="group relative overflow-hidden rounded-full border border-[#FFE8A3] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#AA771C] px-8 sm:px-10 py-3.5 sm:py-4 transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_28px_rgba(212,175,55,0.6)] active:scale-95 cursor-pointer shadow-[0_6px_24px_rgba(0,0,0,0.65)]"
+              >
+                <span className="relative font-title text-xs sm:text-sm uppercase tracking-[0.28em] text-[#2C1802] font-bold">
+                  {weddingConfig.invitation.doorsButtonText || 'TAP TO OPEN THE INVITATION'}
+                </span>
+              </button>
+
+              {/* Subtitle */}
+              <p className="mt-3 text-[0.66rem] sm:text-xs uppercase tracking-[0.24em] text-[#F3E3C0] font-medium text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+                {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
+              </p>
             </div>
           )}
         </div>
