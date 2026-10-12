@@ -55,7 +55,7 @@ export const weddingConfig = {
 Sri Kandregula Ramana & Smt Lalitha Kumari
 warmly invite you to celebrate the union of two hearts`,
     doorsButtonText: 'TAP TO OPEN THE INVITATION',
-    doorsSubText: 'Music will play softly',
+    doorsSubText: '',
   },
 
   // -------------------------------------------------------------

@@ -22,5 +22,6 @@ export const assets = {
   kalash: '/assets/kalash.png',
   coupleNamaste: '/assets/couple-namaste.png',
   coupleLogo: '/client-images/couple-logo.png',
+  ganesha: '/client-images/ganesha.png',
   music: '/assets/wedding-ambience.mp3',
 };

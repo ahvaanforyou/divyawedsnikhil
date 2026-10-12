@@ -216,23 +216,22 @@ export const HeroSection: React.FC = () => {
       <div className="relative z-20 w-full px-4 sm:px-5 [perspective:1400px]">
         <div className="invite-card mx-auto max-w-xl opacity-0">
           <div className="paper-card arch-top relative px-5 py-10 text-center sm:px-12 sm:py-16 shadow-2xl border-2 border-gold/60">
-            {/* Darker Gold Mandala (Centered in wrapper so it rotates in-place without horizontal drift) */}
-            <div className="pointer-events-none absolute -top-14 sm:-top-18 left-1/2 -translate-x-1/2 flex items-center justify-center">
+            {/* Sacred Ganesha Motif (Small on the top of the white background card) */}
+            <div className="invite-line mx-auto -mt-2 sm:-mt-4 mb-2 sm:mb-3 flex items-center justify-center">
               <img
-                src={assets.mandalaGold}
-                alt=""
-                aria-hidden="true"
-                className="w-28 sm:w-36 origin-center animate-[spin_32s_linear_infinite] [filter:brightness(0.55)_contrast(1.6)_saturate(2)] drop-shadow-[0_2px_4px_rgba(70,25,5,0.35)]"
+                src={assets.ganesha}
+                alt="Lord Ganesha"
+                className="w-16 sm:w-20 md:w-24 h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
               />
             </div>
 
-            <p className="invite-line eyebrow mt-6 sm:mt-7 font-title tracking-[0.3em]">{weddingData.dateShort}</p>
+            <p className="invite-line eyebrow font-title tracking-[0.3em]">{weddingData.dateShort}</p>
 
-            {/* Couple Names on Same Line with Imperial Script Font (from Hitesh wedding invitation) */}
+            {/* Couple Names on Same Line with Imperial Script Font (Nikhil & Divya) */}
             <h1 className="invite-line my-4 sm:my-6 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
-              <span>Divya</span>
-              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
               <span>Nikhil</span>
+              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
+              <span>Divya</span>
             </h1>
 
             <div className="invite-line rule-gold mx-auto my-4 w-2/3" />
@@ -315,11 +314,6 @@ export const HeroSection: React.FC = () => {
                   {weddingConfig.invitation.doorsButtonText || 'TAP TO OPEN THE INVITATION'}
                 </span>
               </button>
-
-              {/* Subtitle */}
-              <p className="mt-3 text-[0.66rem] sm:text-xs uppercase tracking-[0.24em] text-[#F3E3C0] font-medium text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
-                {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
-              </p>
             </div>
           )}
         </div>
