@@ -57,22 +57,22 @@ export const MeetCoupleSection: React.FC = () => {
 
         <div className="mt-16 grid gap-14 sm:grid-cols-2 sm:gap-10">
           <PersonCard
-            name={weddingConfig.couple.bride}
-            role={weddingConfig.couple.brideRole}
-            note={weddingConfig.couple.brideParentsNote}
-            src={weddingConfig.couple.bridePhoto || assets.bride}
-            alt={weddingConfig.couple.bridePhotoAlt || `${weddingConfig.couple.bride}, the bride`}
-            delay={0.1}
-            objectPosition="center 12%"
-          />
-          <PersonCard
             name={weddingConfig.couple.groom}
             role={weddingConfig.couple.groomRole}
             note={weddingConfig.couple.groomParentsNote}
             src={weddingConfig.couple.groomPhoto || assets.groom}
             alt={weddingConfig.couple.groomPhotoAlt || `${weddingConfig.couple.groom}, the groom`}
-            delay={0.2}
+            delay={0.1}
             objectPosition="54% 8%"
+          />
+          <PersonCard
+            name={weddingConfig.couple.bride}
+            role={weddingConfig.couple.brideRole}
+            note={weddingConfig.couple.brideParentsNote}
+            src={weddingConfig.couple.bridePhoto || assets.bride}
+            alt={weddingConfig.couple.bridePhotoAlt || `${weddingConfig.couple.bride}, the bride`}
+            delay={0.2}
+            objectPosition="center 12%"
           />
         </div>
       </div>

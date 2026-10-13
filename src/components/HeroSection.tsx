@@ -214,38 +214,38 @@ export const HeroSection: React.FC = () => {
 
       {/* Main Invitation Card (After Doors Open) */}
       <div className="relative z-20 w-full px-4 sm:px-5 [perspective:1400px]">
-        <div className="invite-card mx-auto max-w-xl opacity-0">
-          <div className="paper-card arch-top relative px-5 py-10 text-center sm:px-12 sm:py-16 shadow-2xl border-2 border-gold/60">
+        <div className="invite-card mx-auto max-w-[340px] min-[380px]:max-w-[370px] sm:max-w-[460px] opacity-0">
+          <div className="paper-card arch-top relative px-5 py-6 text-center sm:px-8 sm:py-8 shadow-2xl border-2 border-gold/60">
             {/* Sacred Ganesha Motif (Small on the top of the white background card) */}
-            <div className="invite-line mx-auto -mt-2 sm:-mt-4 mb-2 sm:mb-3 flex items-center justify-center">
+            <div className="invite-line mx-auto -mt-1 sm:-mt-2 mb-1.5 sm:mb-2 flex items-center justify-center">
               <img
                 src={assets.ganesha}
                 alt="Lord Ganesha"
-                className="w-16 sm:w-20 md:w-24 h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
+                className="w-12 sm:w-16 h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
               />
             </div>
 
-            <p className="invite-line eyebrow font-title tracking-[0.3em]">{weddingData.dateShort}</p>
+            <p className="invite-line eyebrow font-title tracking-[0.25em] text-[0.62rem] sm:text-xs">{weddingData.dateShort}</p>
 
             {/* Couple Names on Same Line with Imperial Script Font (Nikhil & Divya) */}
-            <h1 className="invite-line my-4 sm:my-6 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+            <h1 className="invite-line my-2.5 sm:my-3.5 flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 font-imperial text-3xl min-[360px]:text-4xl sm:text-5xl md:text-6xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
               <span>Nikhil</span>
-              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
+              <span className="font-title text-base sm:text-2xl text-[#8B2500] align-middle -mt-0.5 sm:-mt-1">&amp;</span>
               <span>Divya</span>
             </h1>
 
-            <div className="invite-line rule-gold mx-auto my-4 w-2/3" />
-            <p className="invite-line mx-auto mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-muted-foreground px-2">
+            <div className="invite-line rule-gold mx-auto my-2.5 sm:my-3 w-1/2 max-w-xs" />
+            <p className="invite-line mx-auto mt-2 max-w-xs text-[0.72rem] sm:text-xs leading-relaxed text-muted-foreground px-2">
               {weddingData.invitationLine}
             </p>
-            <p className="invite-line mt-6 sm:mt-7 font-title text-base sm:text-lg tracking-wide text-foreground font-semibold">
+            <p className="invite-line mt-3.5 sm:mt-4 font-title text-xs sm:text-sm tracking-wide text-foreground font-semibold">
               {weddingData.dateLabel}
             </p>
-            <p className="invite-line mt-1 text-xs sm:text-sm text-muted-foreground">
+            <p className="invite-line mt-1 text-[0.68rem] sm:text-xs text-muted-foreground">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
             {weddingData.feast && (
-              <p className="invite-line mt-1.5 text-xs uppercase tracking-wider text-gold-deep font-semibold">
+              <p className="invite-line mt-1 text-[0.65rem] uppercase tracking-wider text-gold-deep font-semibold">
                 {weddingData.feast}
               </p>
             )}
@@ -263,13 +263,13 @@ export const HeroSection: React.FC = () => {
                 }
               }}
               aria-label="Scroll down to invitation details"
-              className="invite-line group mt-7 sm:mt-8 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="invite-line group mt-3.5 sm:mt-4 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
             >
-              <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-maroon font-bold select-none text-center animate-scroll-blink">
+              <span className="font-title text-[0.62rem] sm:text-[0.7rem] uppercase tracking-[0.24em] text-maroon font-bold select-none text-center">
                 Scroll Down
               </span>
               <div className="animate-arrow-down flex items-center justify-center">
-                <ChevronDown className="size-4 sm:size-5 text-gold-deep stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] group-hover:text-maroon transition-colors" />
+                <ChevronDown className="size-3.5 sm:size-4 text-gold-deep stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] group-hover:text-maroon transition-colors" />
               </div>
             </a>
           </div>
