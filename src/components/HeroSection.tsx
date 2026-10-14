@@ -218,11 +218,11 @@ export const HeroSection: React.FC = () => {
           <div className="paper-card arch-top relative px-5 py-7 min-[380px]:py-8 sm:px-8 sm:py-9 md:px-10 md:py-11 min-h-[445px] min-[380px]:min-h-[465px] sm:min-h-[540px] md:min-h-[580px] lg:min-h-[620px] max-h-[86svh] flex flex-col justify-between items-center text-center shadow-2xl border-2 border-gold/60">
             {/* Sacred Ganesha Motif (Small on the top of the white background card) */}
             <div className="w-full flex flex-col items-center">
-              <div className="invite-line mx-auto -mt-1 sm:-mt-2 mb-1.5 sm:mb-2 flex items-center justify-center">
+              <div className="invite-line mx-auto -mt-1 sm:-mt-2 mb-1 sm:mb-1.5 flex items-center justify-center">
                 <img
                   src={assets.ganesha}
                   alt="Lord Ganesha"
-                  className="w-13 sm:w-16 md:w-20 h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
+                  className="w-9 min-[380px]:w-10 sm:w-11 md:w-12 max-h-12 min-[380px]:max-h-13 sm:max-h-14 h-auto object-contain drop-shadow-[0_3px_8px_rgba(0,0,0,0.1)]"
                 />
               </div>
 
