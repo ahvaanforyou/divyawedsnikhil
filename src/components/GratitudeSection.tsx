@@ -41,9 +41,9 @@ export const GratitudeSection: React.FC = () => {
               className="mx-auto w-20 sm:w-24"
             />
             <p className="eyebrow mt-7">With gratitude from both families</p>
-            <h2 className="my-4 sm:my-6 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+            <h2 className="my-4 sm:my-6 flex flex-col items-center justify-center font-imperial text-5xl min-[360px]:text-6xl sm:text-7xl md:text-8xl leading-none text-[#5A1A1A] font-normal drop-shadow-sm">
               <span>Nikhil</span>
-              <span className="font-title text-xl sm:text-3xl md:text-4xl text-[#8B2500] align-middle -mt-1 sm:-mt-2">&amp;</span>
+              <span className="font-title text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl text-[#8B2500] my-1.5 sm:my-2.5 leading-none select-none">&amp;</span>
               <span>Divya</span>
             </h2>
             <p className="mt-5 sm:mt-7 font-title text-sm uppercase tracking-[0.32em] text-maroon sm:text-base">
