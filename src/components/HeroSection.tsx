@@ -230,8 +230,8 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Couple Names, Rule & Event Details */}
-            <div className="w-full flex flex-col items-center my-auto py-1 sm:py-2">
-              <h1 className="invite-line my-3 sm:my-4 md:my-5 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 font-imperial text-[2.5rem] min-[360px]:text-[2.9rem] min-[400px]:text-[3.25rem] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[5.8rem] leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+            <div className="w-full flex flex-col items-center mt-1 sm:my-auto mb-auto py-0.5 sm:py-2">
+              <h1 className="invite-line mt-1.5 mb-2.5 sm:my-4 md:my-5 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 font-imperial text-[2.5rem] min-[360px]:text-[2.9rem] min-[400px]:text-[3.25rem] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[5.8rem] leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
                 <span>Nikhil</span>
                 <span className="font-title text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#8B2500] align-middle -mt-0.5 sm:-mt-1 md:-mt-1.5">&amp;</span>
                 <span>Divya</span>
