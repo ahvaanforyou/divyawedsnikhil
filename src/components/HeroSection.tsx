@@ -226,29 +226,29 @@ export const HeroSection: React.FC = () => {
                 />
               </div>
 
-              <p className="invite-line eyebrow font-title tracking-[0.26em] text-[0.64rem] sm:text-xs md:text-sm">{weddingData.dateShort}</p>
+              <p className="invite-line eyebrow font-title tracking-[0.26em] text-[0.72rem] min-[380px]:text-[0.8rem] sm:text-xs md:text-sm">{weddingData.dateShort}</p>
             </div>
 
             {/* Couple Names, Rule & Event Details */}
-            <div className="w-full flex flex-col items-center mt-1 sm:my-auto mb-auto py-0.5 sm:py-2">
-              <h1 className="invite-line mt-1.5 mb-2.5 sm:my-4 md:my-5 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 font-imperial text-[2.5rem] min-[360px]:text-[2.9rem] min-[400px]:text-[3.25rem] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[5.8rem] leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
+            <div className="w-full flex flex-col items-center my-auto py-1 sm:py-2">
+              <h1 className="invite-line my-2.5 sm:my-4 md:my-5 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 font-imperial text-[2.6rem] min-[360px]:text-[3rem] min-[400px]:text-[3.35rem] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[5.8rem] leading-none text-[#5A1A1A] font-normal drop-shadow-sm break-words whitespace-nowrap">
                 <span>Nikhil</span>
                 <span className="font-title text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#8B2500] align-middle -mt-0.5 sm:-mt-1 md:-mt-1.5">&amp;</span>
                 <span>Divya</span>
               </h1>
 
-              <div className="invite-line rule-gold mx-auto my-2.5 sm:my-3.5 w-1/2 max-w-xs" />
-              <p className="invite-line mx-auto mt-1 sm:mt-1.5 max-w-xs sm:max-w-sm text-[0.72rem] sm:text-xs md:text-sm leading-relaxed text-muted-foreground px-2">
+              <div className="invite-line rule-gold mx-auto my-3 sm:my-3.5 w-1/2 max-w-xs" />
+              <p className="invite-line mx-auto mt-1 sm:mt-1.5 max-w-xs sm:max-w-sm text-[0.82rem] min-[380px]:text-[0.88rem] sm:text-xs md:text-sm leading-relaxed text-muted-foreground px-1 sm:px-2">
                 {weddingData.invitationLine}
               </p>
-              <p className="invite-line mt-2.5 sm:mt-3.5 md:mt-4 font-title text-xs sm:text-sm md:text-base tracking-wide text-foreground font-semibold">
+              <p className="invite-line mt-3 sm:mt-3.5 md:mt-4 font-title text-sm min-[380px]:text-[0.95rem] sm:text-sm md:text-base tracking-wide text-foreground font-semibold">
                 {weddingData.dateLabel}
               </p>
-              <p className="invite-line mt-1 sm:mt-1.5 text-[0.68rem] sm:text-xs md:text-sm text-muted-foreground">
+              <p className="invite-line mt-1.5 sm:mt-1.5 text-[0.78rem] min-[380px]:text-[0.84rem] sm:text-xs md:text-sm text-muted-foreground">
                 {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
               </p>
               {weddingData.feast && (
-                <p className="invite-line mt-1 sm:mt-1.5 text-[0.65rem] sm:text-[0.72rem] md:text-xs uppercase tracking-wider text-gold-deep font-semibold">
+                <p className="invite-line mt-1.5 sm:mt-1.5 text-[0.74rem] min-[380px]:text-[0.8rem] sm:text-[0.72rem] md:text-xs uppercase tracking-wider text-gold-deep font-semibold">
                   {weddingData.feast}
                 </p>
               )}
@@ -267,13 +267,13 @@ export const HeroSection: React.FC = () => {
                 }
               }}
               aria-label="Scroll down to invitation details"
-              className="invite-line group mt-2 sm:mt-3 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="invite-line group mt-3 sm:mt-3 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
             >
-              <span className="font-title text-[0.62rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.24em] text-maroon font-bold select-none text-center">
+              <span className="font-title text-[0.7rem] min-[380px]:text-[0.75rem] sm:text-[0.7rem] md:text-xs uppercase tracking-[0.24em] text-maroon font-bold select-none text-center">
                 Scroll Down
               </span>
               <div className="animate-arrow-down flex items-center justify-center">
-                <ChevronDown className="size-3.5 sm:size-4 text-gold-deep stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] group-hover:text-maroon transition-colors" />
+                <ChevronDown className="size-4 text-gold-deep stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] group-hover:text-maroon transition-colors" />
               </div>
             </a>
           </div>
